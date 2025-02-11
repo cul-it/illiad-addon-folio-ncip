@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Cornell University Library FOLIO NCIP Connector</Name>
+  <Author>Matthew Connolly, Cornell University Library</Author>
+  <Version>0.1a</Version>
+  <Active>True</Active>
+  <Type>System</Type>
+  <Description>Description goes here</Description>
+  <Files>
+    <File>folio_ncip_connector.lua</File>
+  </Files>
+  <Settings>
+    <Setting name="NCIP_URL" value="https://edge-cornell-test.folio.ebsco.com/ncip" type="string">
+      <Description>The URL for your NCIP receiver. For FOLIO, this should be the Edge-NCIP URL.</Description>
+    </Setting>
+    <Setting name="NCIP_AUTH_KEY" type="string" value="">
+      <Description>The authorization key for the NCIP receiver.</Description>
+    </Setting>
+  </Settings>
+</Configuration>
