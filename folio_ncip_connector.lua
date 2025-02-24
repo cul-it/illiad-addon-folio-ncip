@@ -97,42 +97,30 @@ function build_accept_item_xml()
     -- fields in the Atlas ILLiad documentation, and maybe use Copilot or ChatGPT to quickly build Lua code to print out
     -- the values of every field in a request.
     local pickup_location = get_pickup_location(GetFieldValue('Transaction', 'CitedPages'));
-    
-    -- local xml = '';
 
     local xml = '<?xml version="1.0" encoding="UTF-8"?>';
     xml = xml .. '<NCIPMessage xmlns="http://www.niso.org/2008/ncip" version="http://www.niso.org/schemas/ncip/v2_02/ncip_v2_02.xsd">';
     xml = xml .. '<AcceptItem>';
+
     xml = xml .. '<InitiationHeader>';
-
     xml = xml .. '<FromAgencyId>';
-    -- CHANGE THIS
-    xml = xml .. '<AgencyId>' .. 'ILL' .. '</AgencyId>';
+    xml = xml .. '<AgencyId>ILL</AgencyId>';
     xml = xml .. '</FromAgencyId>';
-
     xml = xml .. '<ToAgencyId>';
-    -- CHANGE THIS
-    xml = xml .. '<AgencyId>' .. 'Cornell' .. '</AgencyId>';
+    xml = xml .. '<AgencyId>Cornell</AgencyId>';
     xml = xml .. '</ToAgencyId>';
-
-    -- CHANGE THIS
-    xml = xml .. '<ApplicationProfileType>' .. 'ILL' .. '</ApplicationProfileType>';
-
+    xml = xml .. '<ApplicationProfileType>ILL</ApplicationProfileType>';
     xml = xml .. '</InitiationHeader>';
 
 	xml = xml .. '<RequestId>';
-    -- CHANGE THIS
-    xml = xml .. '<AgencyId>' .. 'Cornell' .. '</AgencyId>';
-
-    xml = xml .. '<RequestIdentifierValue>' .. transaction_no .. '</RequestIdentifierValue>'
+    xml = xml .. '<AgencyId>Cornell</AgencyId>';
+    xml = xml .. '<RequestIdentifierValue>' .. transaction_no .. '</RequestIdentifierValue>';
     xml = xml .. '</RequestId>';
     
     xml = xml .. '<RequestedActionType>Hold For Pickup And Notify</RequestedActionType>';
     
     xml = xml .. '<UserId>';
-    -- CHANGE THIS
-    xml = xml .. '<AgencyId>' .. 'Cornell' .. '</AgencyId>';
-    -- xml = xml .. '<UserIdentifierType>Barcode Id</UserIdentifierType>';
+    xml = xml .. '<AgencyId>Cornell</AgencyId>';
     xml = xml .. '<UserIdentifierValue>' .. borrower .. '</UserIdentifierValue>';
     xml = xml .. '</UserId>';
     
@@ -140,17 +128,13 @@ function build_accept_item_xml()
     xml = xml .. '<ItemIdentifierValue>' .. transaction_no  .. '</ItemIdentifierValue>';
     xml = xml .. '</ItemId>';
     
-    -- RETURN DATE?
-    -- PICKUP LOCATION?
-    
     xml = xml .. '<ItemOptionalFields>';
     xml = xml .. '<BibliographicDescription>';
     xml = xml .. '<Author>' .. author .. '</Author>';
     xml = xml .. '<Title>' .. title .. '</Title>';
     xml = xml .. '</BibliographicDescription>';
-    
     xml = xml .. '</ItemOptionalFields>';
-    -- CHANGE THIS
+
     xml = xml .. '<PickupLocation>' .. pickup_location .. '</PickupLocation>';
     xml = xml .. '</AcceptItem>';
     xml = xml .. '</NCIPMessage>';
