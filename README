@@ -1,0 +1,36 @@
+# FOLIO NCIP Connector
+
+## Overview
+
+The FOLIO NCIP Connector is an ILLiad add-on that sends an NCIP message to FOLIO when a borrowing request is checked in to the receiving library. FOLIO will create a set of associated instance, holding, and item records, suppress them, and create a hold for the item in the specified user's account.
+
+## Installation
+
+1. Clone the repository to your local machine.
+
+2. Move or copy the created directory to your ILLiad add-ons directory.
+
+3. Restart the ILLiad client.
+
+## Configuration
+
+In the ILLiad client `Manage Addons` window, find the FOLIO NCIP Connector in the list of add-ons and add values for the following settings:
+
+- `NCIP_URL`: The URL for your NCIP receiver. For FOLIO, this should be the Edge-NCIP URL.
+- `NCIP_AUTH_KEY`: The authorization key for the NCIP receiver.
+
+## Usage
+
+1. Within the Borrowing menu, click Check In From Lending Library.
+
+2. Enter a transaction number and click Search. (You may need to deselect the Sent Only filter.)
+
+3. In the details pane for the matching transaction, make sure that a due date and Lending String have been set.
+
+4. Click the Check In button.
+
+5. A pop-up alert should notify you whether the FOLIO operation was successful or not. (If you don't see an alert after clicking Check In, it's probably an indication that something is misconfigured in the add-on. Check the logs for details.)
+
+## Author
+
+Matthew Connolly, Cornell University Library (mjc12@cornell.edu)
