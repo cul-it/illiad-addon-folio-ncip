@@ -50,7 +50,7 @@ function make_post_request(address, message)
         local problem = find_problem(result);
         local message = "";
         if problem then
-            message = "FOLIO reported a problem: " .. problem .. "(FOLIO records could not be created.)";
+            message = "FOLIO reported a problem: " .. problem .. " (FOLIO records could not be created.)";
         else
             message = "FOLIO records created!";
         end
