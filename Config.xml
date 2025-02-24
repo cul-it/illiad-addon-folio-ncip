@@ -2,7 +2,7 @@
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>FOLIO NCIP Connector</Name>
   <Author>Matthew Connolly, Cornell University Library</Author>
-  <Version>0.1b</Version>
+  <Version>1.0beta</Version>
   <Active>True</Active>
   <Type>System</Type>
   <Description>Description goes here</Description>
