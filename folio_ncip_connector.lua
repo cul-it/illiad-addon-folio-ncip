@@ -161,36 +161,18 @@ end
 
 -- Map the pickup location specified in the ILLiad request to a FOLIO location code.
 function get_pickup_location()
-    location = GetFieldValue('Transaction', 'CitedPages');
+    request_location = GetFieldValue('Transaction', 'CitedPages');
 
-    if location == "Olin" then
-        return "olin,circ";
-    elseif location == "Africana" then
-        return "afr,circ";
-    elseif location == "Annex" then
-        return "anx,grab";
-    elseif location == "ILR" then
-        return "ilr,circ";
-    elseif location == "Fine" then
-        return "fine,circ";
-    elseif location == "Law" then
-        return "law,circ";
-    elseif location == "Management" then
-        return "jgsm,circ";
-    elseif location == "Mann" then
-        return "mann,circ";
-    elseif location == "Math" then
-        return "math,circ";
-    elseif location == "Music" then
-        return "mus,circ";
-    elseif location == "Nestle" then
-        return "nest,circ";
-    elseif location == "Tech" then
-        return "remote,tech";
-    elseif location == "Vet" then
-        return "vet,circ";
-    else
-	    LogDebug("Didn't find a recognizable pickup location; defaulting to Olin. Location code found: " .. location);
+    local success, pickup_locations_map = pcall(require, "pickup_locations");
+    if not success then
+        error("Failed to load pickup locations map from file");
+    end
+
+    local folio_location_code = pickup_locations_map[request_location];
+    if not folio_location_code then
+        LogDebug("Didn't find a recognizable pickup location; defaulting to Olin. Location code found: " .. request_location);
         return "olin,circ";
     end
+
+    return folio_location_code;
 end
