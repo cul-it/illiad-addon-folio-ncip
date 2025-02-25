@@ -161,12 +161,25 @@ end
 function get_pickup_location()
     request_location = GetFieldValue('Transaction', 'CitedPages');
 
+    if not request_location then
+        LogDebug("Request location is nil; defaulting to Olin.");
+        return "olin,circ";
+    end
+
+    request_location = request_location:lower();
+
     local success, pickup_locations_map = pcall(require, "pickup_locations");
     if not success then
         error("Failed to load pickup locations map from file");
     end
 
-    local folio_location_code = pickup_locations_map[request_location];
+    -- Convert keys in pickup_locations_map to lowercase
+    local lower_case_map = {};
+    for k, v in pairs(pickup_locations_map) do
+        lower_case_map[k:lower()] = v;
+    end
+
+    local folio_location_code = lower_case_map[request_location];
     if not folio_location_code then
         LogDebug("Didn't find a recognizable pickup location; defaulting to Olin. Location code found: " .. request_location);
         return "olin,circ";
