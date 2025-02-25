@@ -38,12 +38,10 @@ function make_post_request(address, message)
     if not myWebClient then
         error("Failed to initialize local WebClient");
     end
-    myWebClient.Headers:Clear();
-    myWebClient.Headers:Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537");
-    myWebClient.Headers:Add("Content-Type", "application/xml; charset=UTF-8");
 
+    myWebClient.Headers:Add("Content-Type", "application/xml; charset=UTF-8");
     local success, result = pcall(function()
-        return myWebClient:UploadString(address, "POST", message)
+        return myWebClient:UploadString(address, message)
     end);
 
     if success then
@@ -77,7 +75,7 @@ function make_post_request(address, message)
             error_message = tostring(result);
         end
         
-        LogDebug("Detailed error message: " .. error_message);
+        LogDebug("FOLIO NCIP detailed error message: " .. error_message);
         error("Request failed with message: " .. error_message);
     end
 end
