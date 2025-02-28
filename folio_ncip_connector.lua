@@ -38,6 +38,8 @@ function make_post_request(address, message)
     if not myWebClient then
         error("Failed to initialize local WebClient");
     end
+    LogDebug("Sending NCIP message to FOLIO at " .. address);
+    LogDebug("Message body: " .. message);
 
     myWebClient.Headers:Add("Content-Type", "application/xml; charset=UTF-8");
     local success, result = pcall(function()
@@ -87,9 +89,9 @@ end
 -- taken from the Transaction object, which is apparently globally accessible.
 function build_accept_item_xml()
     local transaction_no = GetFieldValue('Transaction', 'TransactionNumber');
-    local author = GetFieldValue('Transaction', 'LoanAuthor');
-    local title = GetFieldValue('Transaction', 'LoanTitle');
-    local borrower = GetFieldValue('Transaction', 'Username');
+    local author = encode_special_chars(GetFieldValue('Transaction', 'LoanAuthor'));
+    local title = encode_special_chars(GetFieldValue('Transaction', 'LoanTitle'));
+    local borrower = encode_special_chars(GetFieldValue('Transaction', 'Username'));
     -- NOTE: In ILLiad, the CitedPages field in the Transaction object has been overridden to provide the pickup location.
     -- If it becomes necessary to figure out where another field value is hiding, look up the Transaction database table
     -- fields in the Atlas ILLiad documentation, and maybe use Copilot or ChatGPT to quickly build Lua code to print out
@@ -187,3 +189,16 @@ function get_pickup_location()
 
     return folio_location_code;
 end
+
+-- Function to encode special characters in XML
+function encode_special_chars(input)
+    if input then
+        input = input:gsub("&", "&amp;")
+        input = input:gsub("<", "&lt;")
+        input = input:gsub(">", "&gt;")
+        input = input:gsub("\"", "&quot;")
+        input = input:gsub("'", "&apos;")
+    end
+    return input
+end
+

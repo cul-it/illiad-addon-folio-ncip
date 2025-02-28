@@ -2,7 +2,7 @@
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>FOLIO NCIP Connector</Name>
   <Author>Matthew Connolly, Cornell University Library (mjc12@cornell.edu)</Author>
-  <Version>1.0</Version>
+  <Version>1.0.1</Version>
   <Active>True</Active>
   <Type>System</Type>
   <Description>This add-on sends an NCIP message to FOLIO when a borrowing request is checked in to the receiving library. FOLIO will create a set of associated instance, holding, and item records, suppress them, and create a hold for the item in the specified user's account.</Description>
