@@ -38,6 +38,7 @@ function make_post_request(address, message)
     if not myWebClient then
         error("Failed to initialize local WebClient");
     end
+
     LogDebug("Sending NCIP message to FOLIO at " .. address);
     LogDebug("Message body: " .. message);
 
@@ -112,7 +113,7 @@ function build_accept_item_xml()
     xml = xml .. '<ApplicationProfileType>ILL</ApplicationProfileType>';
     xml = xml .. '</InitiationHeader>';
 
-	xml = xml .. '<RequestId>';
+	  xml = xml .. '<RequestId>';
     xml = xml .. '<AgencyId>Cornell</AgencyId>';
     xml = xml .. '<RequestIdentifierValue>' .. transaction_no .. '</RequestIdentifierValue>';
     xml = xml .. '</RequestId>';
@@ -201,4 +202,3 @@ function encode_special_chars(input)
     end
     return input
 end
-
