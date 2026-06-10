@@ -7,14 +7,14 @@ return {
     Annex = "anx,grab",
     ILR = "ilr,circ",
     Fine = "fine,circ",
-    Geneva = "gnva,circ",
+    Geneva = "remote,gnva",
     Law = "law,circ",
     Management = "jgsm,circ",
     Mann = "mann,circ",
     Math = "math,circ",
     Music = "mus,circ",
     Nestle = "nest,circ",
-    Ornithology = "orni,circ",
+    Ornithology = "orni,grab",
     Tech = "remote,tech",
     Vet = "vet,circ"
 }
