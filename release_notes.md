@@ -1,5 +1,9 @@
 # Release notes: illiad-addon-folio-ncip
 
+## [1.0.3] - 2026-09-23
+
+### Added
+- Wood library pickup location
 
 ## [1.0.2] - 2026-06-10
 

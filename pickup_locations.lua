@@ -16,5 +16,6 @@ return {
     Nestle = "nest,circ",
     Ornithology = "orni,grab",
     Tech = "remote,tech",
-    Vet = "vet,circ"
+    Vet = "vet,circ",
+    Wood = "wood,tech"
 }
